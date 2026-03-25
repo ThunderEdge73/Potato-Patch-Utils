@@ -4,10 +4,9 @@ A util library for mods created by the Potato Patch with the explicit intent of 
 ## What functionality does this mod add?
 
 ### Automatic File Loading
-`PotatoPatchUtils.load_files(path, mod_id, blacklist)`
+`PotatoPatchUtils.load_files(path, blacklist)`
 Will automatically load all `.lua` files within the passed in `path` (will typically be `SMODS.current_mod.path`)
 - `path` (string) [REQUIRED] - The file path the file loader will start at. Will automatically open folders and load files within them as well
-- `mod_id` (string) [REQUIRED] - The ID of the mod whose files are being loaded. Is used to display correct mod ID in the event of a crash
 - `blacklist` (table) - A table of strings of file names that should be ignored on file loading (file extension, i.e. `.lua` must be included)
 
 ### Developer and Team objects
@@ -38,9 +37,8 @@ If the name of a Developer or Team object are used, the text will use the specif
 ### Localization Loading
 This feature allows for multiple localization `.lua` files to be used in one project. This allows for much easier handling of localization files in collaborative efforts
 
-`PotatoPatchUtils.LOC.process_loc_text(locPath, mod_id)`
+`PotatoPatchUtils.LOC.process_loc_text(locPath)`
 - `locPath` (string) [REQUIRED] - A string of the path leading to the root localization folder
-- `mod_id` (string)  [REQUIRED] - The ID of the mod whose files are being loaded. Is used to properly attribute the file to the mod
 - 
 Creating a folder within the localization folder that has a name that matches a valid localization code will be loaded automatically after running this function
 
