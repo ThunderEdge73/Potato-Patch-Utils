@@ -67,7 +67,7 @@ function PotatoPatchUtils.Developer:init(args)
         self.loc = args.loc and type(args.loc) == 'boolean' and 'PotatoPatchDev_' .. args.name or args.loc
         self.mod_id = SMODS.current_mod.id
 
-        PotatoPatchUtils.Developers[SMODS.current_mod.prefix .. args.name] = self
+        PotatoPatchUtils.Developers[SMODS.current_mod.prefix .. '_' .. args.name] = self
 
         if args.team and PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. args.team] then
             table.insert(PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. args.team].members, self)
@@ -99,7 +99,7 @@ function PotatoPatchUtils.Team:init(args)
         self.members = {}
         self.mod_id = SMODS.current_mod.id
 
-        PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. args.name] = self
+        PotatoPatchUtils.Teams[SMODS.current_mod.prefix .. '_' .. args.name] = self
     end
 end
 
