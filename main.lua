@@ -13,7 +13,7 @@ local function load_file_native(path)
         return nil,
         "Error reading file '" .. path .. "' for mod with ID '" .. SMODS.current_mod.id .. "': " .. err
     end
-    local path_len = string.len(path) + 1
+    local path_len = string.len(SMODS.current_mod.path) + 1
     local short_path = string.sub(path, path_len, path:len())
     local chunk, err = load(file_content, "=[SMODS " .. SMODS.current_mod.id .. ' "' .. short_path .. '"]')
     if not chunk then
@@ -46,6 +46,6 @@ end
 --#endregion
 
 -- Other loading things
-PotatoPatchUtils.load_files(PotatoPatchUtils.path .. '/src')
+PotatoPatchUtils.load_files(PotatoPatchUtils.path .. 'src')
 SMODS.handle_loc_file(PotatoPatchUtils.path)
 PotatoPatchUtils.LOC.init()
