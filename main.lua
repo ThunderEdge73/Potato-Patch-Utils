@@ -1,14 +1,14 @@
 PotatoPatchUtils = SMODS.current_mod
 
 --#region File Loading
-local nativefs = NFS
+local nativefs = SMODS.NFS
 
 local function load_file_native(path)
     if not path or path == "" then
         error("No path was provided to load.")
     end
     local file_path = path
-    local file_content, err = NFS.read(file_path)
+    local file_content, err = nativefs.read(file_path)
     if not file_content then
         return nil,
         "Error reading file '" .. path .. "' for mod with ID '" .. SMODS.current_mod.id .. "': " .. err
