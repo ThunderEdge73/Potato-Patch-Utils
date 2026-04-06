@@ -14,18 +14,33 @@ These objects are used for credits and calculating contexts outside of a traditi
 `PotatoPatchUtils.Team(args)`
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Team
-- `colour` (hex) - The Team name's text fill color
+- `colour` (colour/gradient) - The Team name's text fill colour
 - `loc` (string/boolean) - Assigns the Team's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchTeam_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 - `credit_rows` (table) how many developer objects to display on each row (credit screen has 2 rows, a table of 1 number will center the row in the page)
+```Lua
+PotatoPatchUtils.Team {
+  name = 'Example Team',
+  colour = HEX(ffffff),
+  loc = true, -- Can also be `loc = 'k_exampleteam_name'` where the string is an arbitrary localization dictionary entry
+}
+```
 
 `PotatoPatchUtils.Developer(args)`
 `args` is a table of the following values:
 - `name` (string) [REQUIRED] - The name of the Developer
-- `colour` (hex) - The Developer name's text fill color
+- `colour` (colour/gradient) - The Developer name's text fill colour
 - `loc` (string/boolean) - Assigns the Developer's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchDev_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 - `team` (string) - The name of the Team the Developer is a part of
+```Lua
+PotatoPatchUtils.Developer {
+  name = 'doofus',
+  colour = HEX(000000),
+  loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
+  team = 'Example Team' -- Must match an already existing Team name
+}
+```
 
 ### Credits
 Adding these values to a game object will automatically add Credits to whoever is specified in the object's description box. The format should look something like this: `ppu_artist = {'Artist1', 'Artist2'}`
@@ -42,7 +57,6 @@ This feature allows for multiple localization `.lua` files to be used in one pro
 
 `PotatoPatchUtils.LOC.process_loc_text(locPath)`
 - `locPath` (string) [REQUIRED] - A string of the path leading to the root localization folder
-- 
 Creating a folder within the localization folder that has a name that matches a valid localization code will be loaded automatically after running this function
 
 <img width="132" height="91" alt="image" src="https://github.com/user-attachments/assets/742d5d25-a19f-45e8-ba5c-53727c72b01a" />
