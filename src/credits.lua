@@ -53,6 +53,33 @@ function G.UIDEF.card_h_popup(card)
     end
     return ret_val
 end
+
+local PotatoPatchUtils_create_UIBox_blind_popup = create_UIBox_blind_popup
+function create_UIBox_blind_popup(blind, discovered, vars)
+    local ret_val = PotatoPatchUtils_create_UIBox_blind_popup(blind, discovered, vars)
+    local obj = blind
+    local target = ret_val.nodes
+    if obj and obj.ppu_team then
+        local str = PotatoPatchUtils.CREDITS.generate_string(obj.ppu_team, 'ppu_team_credit', obj.mod.prefix)
+        if str then
+            table.insert(target, str)
+        end
+    end
+    if obj and obj.ppu_artist then
+        local str = PotatoPatchUtils.CREDITS.generate_string(obj.ppu_artist, 'ppu_art_credit', obj.mod.prefix)
+        if str then
+            table.insert(target, str)
+        end
+    end
+    if obj and obj.ppu_coder then
+        local str = PotatoPatchUtils.CREDITS.generate_string(obj.ppu_coder, 'ppu_code_credit', obj.mod.prefix)
+        if str then
+            table.insert(target, str)
+        end
+    end
+    return ret_val
+end
+
 --#endregion
 
 --#region Developer Objects

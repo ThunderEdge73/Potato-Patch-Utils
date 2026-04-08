@@ -15,9 +15,10 @@ payload = '''
 
 -- PotatoPatchUtils automatic team attribute
 if o.ppu_team then
+    local _prefix = o.original_mod and o.original_mod.prefix or o.mod and o.mod.prefix or nil
     for _, v in pairs(o.ppu_team) do
-        if SMODS.Attributes[o.original_mod.prefix .. '_' .. v] then
-            SMODS.add_attribute(o.original_mod.prefix .. '_' .. v, { key })
+        if _prefix and SMODS.Attributes[_prefix .. '_' .. v] then
+            SMODS.add_attribute(_prefix .. '_' .. v, { key })
         end
     end
 end
