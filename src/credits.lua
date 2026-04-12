@@ -40,7 +40,7 @@ end
 local PotatoPatchUtils_card_popup = G.UIDEF.card_h_popup
 function G.UIDEF.card_h_popup(card)
     local ret_val = PotatoPatchUtils_card_popup(card)
-    local obj = card.config.center
+    local obj = card.config.center or card.config.tag and SMODS.Tags[card.config.tag.key]
     local target = ret_val.nodes[1].nodes[1].nodes[1].nodes
     if obj and obj.ppu_team then
         local str = PotatoPatchUtils.CREDITS.generate_string(obj.ppu_team, 'ppu_team_credit', obj.mod.prefix)
