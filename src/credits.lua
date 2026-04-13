@@ -348,3 +348,45 @@ function PotatoPatchUtils.CREDITS.register_page(mod)
     end
 end
 --#endregion
+
+--#region JimboQuip stuff
+
+local floating_sprite_draw_ref = SMODS.DrawSteps["floating_sprite"].func
+SMODS.DrawSteps["floating_sprite"].func = function(self, layer)
+	floating_sprite_draw_ref(self, layer)
+	if self.is_dev_quip_sprite then
+		local scale_mod = 0.07
+			+ 0.02 * math.sin(1.8 * G.TIMERS.REAL)
+			+ 0.00
+				* math.sin((G.TIMERS.REAL - math.floor(G.TIMERS.REAL)) * math.pi * 14)
+				* (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 3
+		local rotate_mod = 0.05 * math.sin(1.219 * G.TIMERS.REAL)
+			+ 0.00 * math.sin(G.TIMERS.REAL * math.pi * 5) * (1 - (G.TIMERS.REAL - math.floor(G.TIMERS.REAL))) ^ 2
+		if self.children.floating_sprite then
+			self.children.floating_sprite:draw_shader(
+				"dissolve",
+				0,
+				nil,
+				nil,
+				self.children.center,
+				scale_mod,
+				rotate_mod,
+				nil,
+				0.1 + 0.03 * math.sin(1.8 * G.TIMERS.REAL),
+				nil,
+				0.6
+			)
+			self.children.floating_sprite:draw_shader(
+				"dissolve",
+				nil,
+				nil,
+				nil,
+				self.children.center,
+				scale_mod,
+				rotate_mod
+			)
+		end
+	end
+end
+
+--#endregion

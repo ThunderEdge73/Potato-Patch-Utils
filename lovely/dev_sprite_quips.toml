@@ -24,6 +24,7 @@ if args.ppu_dev then
         card_obj.children.floating_sprite.role.draw_major = card_obj
         card_obj.children.floating_sprite.states.hover.can = false
         card_obj.children.floating_sprite.states.click.can = false
+        card_obj.is_dev_quip_sprite = true
     end
 end
 '''
