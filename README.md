@@ -34,12 +34,17 @@ PotatoPatchUtils.Team {
 - `loc` (string/boolean) - Assigns the Developer's display name to a localization key of your choosing from `descriptions.PotatoPatch`. Will be assigned to `'PotatoPatchDev_' .. args.name` if a boolean is passed
 - `calculate` (function(self, context)) - A traditional calculate function, much like global mod calculate from Steamodded
 - `team` (string) - The name of the Team the Developer is a part of
+- `atlas` (string) - The key of the atlas your credit art will be pulled from
+- `pos` (table) - A coordinate table for the position of your credit art 
+- `soul_pos` (table) - A coordinate table for the position of your credit art's soul sprite 
 ```Lua
 PotatoPatchUtils.Developer {
   name = 'doofus',
   colour = HEX(000000),
   loc = true, -- Can also be `loc = 'k_doofus_name'` where the string is an arbitrary localization dictionary entry
   team = 'Example Team' -- Must match an already existing Team name
+  atlas = 'modprefix_atlas',
+  pos = {x = 0, y = 0}
 }
 ```
 
