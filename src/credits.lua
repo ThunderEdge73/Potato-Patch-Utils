@@ -269,8 +269,7 @@ function PotatoPatchUtils.CREDITS.create_team_credit_page(team)
 		end
 
         local name = {}
-        localize({ type = 'name', set = 'PotatoPatch', key = member.loc, nodes = name, scale = 0.8, maxw = 2, text_colour = member.colour, stylize = true, no_shadow = true, no_pop_in = true, no_bump = true, no_silent = true, no_spacing = true})
-        if member.always_use_dynatext or member.text_effect or member.shaders then
+        if member.always_use_dynatext or member.text_effect or member.shaders or member.colours then
 		    name = {n=G.UIT.O, config = {object = DynaText({
 		        string = member.loc and localize({type = 'name_text', key = member.loc, set = 'PotatoPatch'}) or dev.name or 'ERROR',
 		        colours = member.colours or { member.colour or G.C.UI.BACKGROUND_WHITE }, scale = 0.47,
@@ -278,6 +277,7 @@ function PotatoPatchUtils.CREDITS.create_team_credit_page(team)
 		        silent = true, shadow = false, y_offset = -0.6,
 		    })}}
 		else
+        	localize({ type = 'name', set = 'PotatoPatch', key = member.loc, nodes = name, scale = 0.8, maxw = 2, text_colour = member.colour, stylize = true, no_shadow = true, no_pop_in = true, no_bump = true, no_silent = true, no_spacing = true})
 		    name = name[1] and name[1][1] or {n=G.UIT.T, config={scale = 0.47, colour = member.colour, text = member.name}}
 		end
 
